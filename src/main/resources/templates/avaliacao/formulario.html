@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{template.html}">
+
+<head>
+	<title>Nova Avaliação</title>
+</head>
+
+<body>
+	<div layout:fragment="conteudo">
+		<div class="box">
+			<h1>Nova Avaliação</h1>
+			<form method="post" action="/avaliacao">
+				<input type="hidden" name="_method" value="put" th:if="${avaliacao!= null}">
+				<input type="hidden" name="id" th:value="${avaliacao?.id}">
+
+				<div>
+					<label for="dataAvaliacao">Data da Avaliação: </label>
+					<input type="date" id="dataAvaliacao" name="dataAvaliacao" th:value="${avaliacao?.dataAvaliacao}" required>
+				</div>
+				
+				<div>
+					<label for="diagnostico">Diagnóstico: </label>
+					<input type="text" id="diagnostico" name="diagnostico" th:value="${avaliacao?.diagnostico}" required>
+				</div>
+				
+				<div>
+					<label for="nivelAderencia">Nível de Aderência: </label>
+					<input type="text" id="nivelAderencia" name="nivelAderencia" th:value="${avaliacao?.nivelAderencia}" required>
+				</div>
+				
+				<div>
+					<label for="pontuacao">Pontuação: </label>
+					<input type="text" id="pontuacao" name="pontuacao" th:value="${avaliacao?.pontuacao}">
+				</div>
+				
+				<input type="submit" value="Cadastrar">
+			</form>
+		</div>
+</body>
+
+</html>

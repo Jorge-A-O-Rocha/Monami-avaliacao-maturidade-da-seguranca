@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Lista de Formulários </title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <h1> Lista de Formulários</h1>
+    <a href="/formulario/formulario">Novo Formulário</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Possui Controle</th>
+                <th>ID. Cliente</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+              <tr th:each="formulario : ${lista}">
+                <td th:text="${formulario.possuiControle}"></td>
+                <td th:text="${formulario.clienteId}"></td>
+                <td>
+                    <a th:href="@{/formulario/formulario?id={id}(id=${formulario.id})}">
+                        <button>Editar</button>
+                    </a> 
+					<form action="/formulario" method="post" style="display:inline;">
+						<input type="hidden" name="_method" value="delete">
+						<input type="hidden" name="id" th:value="${formulario.id}">
+						<input type="submit" value="Excluir">
+					</form>
+				</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
