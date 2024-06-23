@@ -1,63 +1,145 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{template.html}">
 
 <head>
 <meta charset="UTF-8">
 <title>Cadastro de Formulário</title>
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        padding-top: 420px;
+    }
+
+    .box {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .pergunta {
+        margin-bottom: 15px;
+    }
+
+    .pergunta label,
+    .cliente-id label {
+        display: block;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+
+    select, input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .legend {
+        text-align: left;
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #1E90FF;
+    }
+</style>
 </head>
 
-
 <body>
-	<div layout:fragment="conteudo">
+	<div layout:fragment="conteudo" class="container">
 		<div class="box">
 			<h1>Cadastro de Formulário</h1>
-			<form id="formulario" method="post" action="/formulario">
-				<input type="hidden" name="_method" value="put"
-					th:if="${formulario != null}"> <input type="hidden"
-					name="id" th:value="${formulario?.id}">
+			<div class="legend">
+				<p>Para preencher o formulário, avalie cada pergunta com uma nota de 0 a 3, sendo:</p>
+				<ul>
+					<li><strong>0</strong>: Nenhum controle implementado</li>
+					<li><strong>1</strong>: Controle básico implementado</li>
+					<li><strong>2</strong>: Controle intermediário implementado</li>
+					<li><strong>3</strong>: Controle avançado implementado</li>
+				</ul>
+			</div>
+			<form id="formulario" method="post" action="/formulario" onsubmit="return validateForm()">
+				<input type="hidden" name="_method" value="put" th:if="${formulario != null}"> 
+				<input type="hidden" name="id" th:value="${formulario?.id}">
 
-				<div class="pergunta">
-					<label for="clienteId">Cliente ID:</label> <input type="text"
-						id="clienteId" name="clienteId"
-						th:value="${formulario?.clienteId}">
+				<div class="cliente-id">
+					<label for="clienteId">Cliente ID:</label> 
+					<input type="text" id="clienteId" name="clienteId" th:value="${formulario?.clienteId}" required pattern="[0-9]+" title="O Cliente ID deve conter apenas números.">
 				</div>
 
 				<div class="pergunta">
-					<label for="pergunta1">Pergunta 1:</label> <input type="number"
-						id="pergunta1" name="pergunta1"
-						th:value="${formulario?.pergunta1}">
+					<label for="pergunta1">O cliente possui uma política formal de segurança da informação implementada e comunicada a todos os funcionários?</label>
+					<select id="pergunta1" name="pergunta1" th:value="${formulario?.pergunta1}">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
 				</div>
 
 				<div class="pergunta">
-					<label for="pergunta2">Pergunta 2:</label> <input type="number"
-						id="pergunta2" name="pergunta2"
-						th:value="${formulario?.pergunta2}">
+					<label for="pergunta2">Os dispositivos e sistemas do cliente são configurados e mantidos com configurações de segurança padronizadas?</label>
+					<select id="pergunta2" name="pergunta2" th:value="${formulario?.pergunta2}">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
 				</div>
 
 				<div class="pergunta">
-					<label for="pergunta3">Pergunta 3:</label> <input type="number"
-						id="pergunta3" name="pergunta3"
-						th:value="${formulario?.pergunta3}">
+					<label for="pergunta3">O cliente monitora ativamente a rede e os sistemas para detectar atividades suspeitas ou anômalas?</label>
+					<select id="pergunta3" name="pergunta3" th:value="${formulario?.pergunta3}">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
 				</div>
 
 				<div class="pergunta">
-					<label for="pergunta4">Pergunta 4:</label> <input type="number"
-						id="pergunta4" name="pergunta4"
-						th:value="${formulario?.pergunta4}">
+					<label for="pergunta4">O cliente possui um programa de gerenciamento de vulnerabilidades para identificar, avaliar e remediar falhas de segurança em sistemas e aplicativos?</label>
+					<select id="pergunta4" name="pergunta4" th:value="${formulario?.pergunta4}">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
 				</div>
 
 				<div class="pergunta">
-					<label for="pergunta5">Pergunta 5:</label> <input type="number"
-						id="pergunta5" name="pergunta5"
-						th:value="${formulario?.pergunta5}">
+					<label for="pergunta5">O cliente possui controles de acesso implementados para garantir que apenas usuários autorizados possam acessar informações sensíveis?</label>
+					<select id="pergunta5" name="pergunta5" th:value="${formulario?.pergunta5}">
+						<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
 				</div>
 
 				<input type="submit" value="Enviar">
 			</form>
 		</div>
 	</div>
+
+	<script>
+		function validateForm() {
+			var clienteId = document.getElementById("clienteId").value;
+			var pattern = /^[0-9]+$/;
+			if (!clienteId.match(pattern)) {
+				alert("O Cliente ID deve conter apenas números.");
+				return false;
+			}
+			return true;
+		}
+	</script>
 </body>
 
 </html>

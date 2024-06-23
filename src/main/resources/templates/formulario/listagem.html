@@ -12,6 +12,7 @@
 		<table>
 			<thead>
 				<tr>
+					<th>ID</th>
 					<th>CNPJ</th>
 					<th>Nome</th>
 					<th>Data Avaliacao</th>
@@ -23,6 +24,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="formulario : ${lista}">
+					<td th:text="${formulario.clienteId}"></td>
 					<td th:text="${formulario.clienteCnpj}"></td>
 					<td th:text="${formulario.clienteEmpresa}"></td>
 					<td th:text="${formulario.dataAvaliacao}"></td>

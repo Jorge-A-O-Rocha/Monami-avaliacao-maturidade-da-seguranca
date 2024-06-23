@@ -192,5 +192,10 @@ public class Formulario {
 	public String getClienteEmpresa() {
 		return cliente != null ? cliente.getNomeEmpresa() : null;
 	}
+	
+	public Long getClienteID() {
+		return cliente != null ? cliente.getId() : null;
+	}
+
 
 }

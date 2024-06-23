@@ -10,7 +10,7 @@ public class helloController {
 
 	@GetMapping
 	public String carregaPagina() {
-		return "home";
+		return "home/home";
 	}
 
 }
