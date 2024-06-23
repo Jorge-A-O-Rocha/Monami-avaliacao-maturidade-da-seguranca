@@ -1,6 +1,5 @@
 package evento.fatec.api.cliente;
 
-import evento.fatec.api.avaliacao.Avaliacao;
 import evento.fatec.api.formulario.Formulario;
 import jakarta.validation.constraints.NotNull;
 
@@ -19,8 +18,7 @@ public record DadosAtualizacaoCliente(
 	 String razaoSocial,
 	 String senha,
 	 String tipoServico,
-	 Formulario formulario,
-	 Avaliacao avaliacoes) {
+	 Formulario formulario) {
 		
 }
 

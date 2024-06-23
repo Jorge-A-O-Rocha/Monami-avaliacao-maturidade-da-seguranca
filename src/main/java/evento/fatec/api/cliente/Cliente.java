@@ -1,9 +1,7 @@
 package evento.fatec.api.cliente;
 
-
 import java.util.List;
 
-import evento.fatec.api.avaliacao.Avaliacao;
 import evento.fatec.api.formulario.Formulario;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -19,16 +17,18 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-@Table(name ="cliente")
-@Entity(name ="cliente")
+
+@Table(name = "cliente")
+@Entity(name = "cliente")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of="id")
+@EqualsAndHashCode(of = "id")
 public class Cliente {
-	@Id @GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column (name="cliente_id")
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "cliente_id")
 	private Long id;
 	private String cnpj;
 	private String descricaoServico;
@@ -42,21 +42,15 @@ public class Cliente {
 	private String razaoSocial;
 	private String senha;
 	private String tipoServico;
-	
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<Formulario> formulario;
-	
-	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private List<Avaliacao> avaliacoes;
-	
-	
-	public Cliente() {
-		
-	}
-	
 
-	public Cliente (DadosCadastroCliente dados, List<Formulario> formulario, 
-			List<Avaliacao> avaliacoes) {
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+	private List<Formulario> formulario;
+
+	public Cliente() {
+
+	}
+
+	public Cliente(DadosCadastroCliente dados, List<Formulario> formulario) {
 		this.cnpj = dados.cnpj();
 		this.descricaoServico = dados.descricaoServico();
 		this.email = dados.email();
@@ -70,7 +64,6 @@ public class Cliente {
 		this.senha = dados.senha();
 		this.tipoServico = dados.tipoServico();
 		this.formulario = formulario;
-		this.avaliacoes = avaliacoes;
 	}
 
 	public Long getId() {
@@ -176,7 +169,7 @@ public class Cliente {
 	public void setTipoServico(String tipoServico) {
 		this.tipoServico = tipoServico;
 	}
-	
+
 	public List<Formulario> getFormulario() {
 		return formulario;
 	}
@@ -185,40 +178,24 @@ public class Cliente {
 		this.formulario = formulario;
 	}
 
-
-	public List<Avaliacao> getAvaliacoes() {
-		return avaliacoes;
-	}
-
-
-	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
-		this.avaliacoes = avaliacoes;
-	}
-	
 	public Long getFormularioId() {
-        return formulario != null ? ((Formulario) formulario).getId() : null;
-    }
-	
-	public Long getAvaliacaoId() {
-        return avaliacoes != null ? ((Avaliacao) avaliacoes).getId() : null;
-    }
+		return formulario != null ? ((Formulario) formulario).getId() : null;
+	}
 
-	public void atualizarInformacoes(@Valid DadosAtualizacaoCliente dados, List<Formulario> formulario, 
-			List<Avaliacao> avaliacoes) {
-		if(dados.nomeCliente() != null)
-		    this.cnpj = dados.cnpj();
-		    this.descricaoServico = dados.descricaoServico();
-		    this.email = dados.email();
-		    this.emailCliente = dados.emailCliente();
-		    this.idContrato = dados.idContrato();
-			this.nomeCliente = dados.nomeCliente();
-			this.nomeEmpresa = dados.nomeEmpresa();
-			this.nomeGestor = dados.nomeGestor();
-			this.pontoFocal = dados.pontoFocal();
-			this.razaoSocial = dados.razaoSocial();
-			this.senha = dados.senha();
-			this.tipoServico = dados.tipoServico();
-			this.formulario = formulario;
-			this.avaliacoes = avaliacoes;
+	public void atualizarInformacoes(@Valid DadosAtualizacaoCliente dados, List<Formulario> formulario) {
+		if (dados.nomeCliente() != null)
+			this.cnpj = dados.cnpj();
+		this.descricaoServico = dados.descricaoServico();
+		this.email = dados.email();
+		this.emailCliente = dados.emailCliente();
+		this.idContrato = dados.idContrato();
+		this.nomeCliente = dados.nomeCliente();
+		this.nomeEmpresa = dados.nomeEmpresa();
+		this.nomeGestor = dados.nomeGestor();
+		this.pontoFocal = dados.pontoFocal();
+		this.razaoSocial = dados.razaoSocial();
+		this.senha = dados.senha();
+		this.tipoServico = dados.tipoServico();
+		this.formulario = formulario;
 	}
 }

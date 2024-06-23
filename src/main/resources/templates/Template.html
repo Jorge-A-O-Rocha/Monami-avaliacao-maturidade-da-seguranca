@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en" xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="../static/css/estilo.css" th:href="@{/css/estilo.css}">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../static/css/estilo.css"
+	th:href="@{/css/estilo.css}">
 
 </head>
 <body>
 	<header>
-        <nav>
-            <ul>
-                <li><a th:href="@{/}">Página Inicial</a></li>
-                <li><a th:href="@{/avaliacao}">Avaliação</a></li>
-                <li><a th:href="@{/cliente}">Cliente</a></li>
-                <li><a th:href="@{/formulario}">Formulário</a></li>
-            </ul>
-        </nav>
-    </header>
+		<nav>
+			<ul>
+				<li><a th:href="@{/}">Página Inicial</a></li>
+				<li><a th:href="@{/cliente}">Cliente</a></li>
+				<li><a th:href="@{/formulario}">Avaliação</a></li>
+			</ul>
+		</nav>
+	</header>
 
-<div layout:fragment="conteudo"></div>
-
-
+	<div layout:fragment="conteudo"></div>
 </body>
 </html>

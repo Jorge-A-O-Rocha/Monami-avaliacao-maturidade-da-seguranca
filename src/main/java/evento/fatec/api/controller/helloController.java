@@ -1,16 +1,16 @@
 package evento.fatec.api.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/hello")
+@Controller
+@RequestMapping("/")
 public class helloController {
-	
-	@GetMapping	
-	public String olaMundo() {
-		return "Ola mundo. Tudo bem?";
+
+	@GetMapping
+	public String carregaPagina() {
+		return "home";
 	}
 
 }

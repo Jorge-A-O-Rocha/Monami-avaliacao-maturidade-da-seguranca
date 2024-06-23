@@ -1,58 +1,61 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{template.html}">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{template.html}">
 <head>
-    <title>Lista de Clientes </title>
+<title>Lista de Clientes</title>
 </head>
 <body>
-<div layout:fragment="conteudo">
-    <h1> Lista de Clientes</h1>
-    <a href="/cliente/formulario">Novo Cliente</a>
-    <a href="/cliente/novo">Novo Cliente Proc</a>
-    <table>
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>CNPJ</th>
-                <th>Descrição do Serviço</th>
-                <th>Email</th>
-                <th>Email do Cliente</th>
-                <th>ID do Contrato</th>
-                <th>Nome da Empresa</th>
-                <th>Nome do Gestor</th>
-                <th>Ponto Focal</th>
-                <th>Razão Social</th>
-                <th>Tipo de Serviço</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-              <tr th:each="cliente : ${lista}">
-                <td th:text="${cliente.nomeCliente}"></td>
-                <td th:text="${cliente.cnpj}"></td>
-                <td th:text="${cliente.descricaoServico}"></td>
-                <td th:text="${cliente.email}"></td>
-                <td th:text="${cliente.emailCliente}"></td>
-                <td th:text="${cliente.idContrato}"></td>
-                <td th:text="${cliente.nomeEmpresa}"></td>
-                <td th:text="${cliente.nomeGestor}"></td>
-                <td th:text="${cliente.pontoFocal}"></td>
-                <td th:text="${cliente.razaoSocial}"></td>
-                <td th:text="${cliente.tipoServico}"></td>
-                <td>
-                    <a th:href="@{/cliente/formulario?id={id}(id=${cliente.id})}">
-                        <button>Editar</button>
-                    </a> 
-					<form action="/cliente" method="post" style="display:inline;">
-						<input type="hidden" name="_method" value="delete">
-						<input type="hidden" name="id" th:value="${cliente.id}">
-						<input type="submit" value="Excluir">
-					</form>
-				</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+	<div layout:fragment="conteudo">
+		<h1>Lista de Clientes</h1>
+		<a href="/cliente/formulario">Novo Cliente</a>
+		<form action="/cliente/pesquisa" method="get">
+			<input type="text" name="nomeCliente"
+				placeholder="Pesquisar por nome" th:value="*{nomeCliente}">
+			<input type="submit" value="Pesquisar">
+		</form>
+		<table>
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>CNPJ</th>
+					<th>Descrição do Serviço</th>
+					<th>Email</th>
+					<th>Email do Cliente</th>
+					<th>ID do Contrato</th>
+					<th>Nome da Empresa</th>
+					<th>Nome do Gestor</th>
+					<th>Ponto Focal</th>
+					<th>Razão Social</th>
+					<th>Tipo de Serviço</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cliente : ${lista}">
+					<td th:text="${cliente.nomeCliente}"></td>
+					<td th:text="${cliente.cnpj}"></td>
+					<td th:text="${cliente.descricaoServico}"></td>
+					<td th:text="${cliente.email}"></td>
+					<td th:text="${cliente.emailCliente}"></td>
+					<td th:text="${cliente.idContrato}"></td>
+					<td th:text="${cliente.nomeEmpresa}"></td>
+					<td th:text="${cliente.nomeGestor}"></td>
+					<td th:text="${cliente.pontoFocal}"></td>
+					<td th:text="${cliente.razaoSocial}"></td>
+					<td th:text="${cliente.tipoServico}"></td>
+					<td><a
+						th:href="@{/cliente/formulario?id={id}(id=${cliente.id})}">
+							<button>Editar</button>
+					</a>
+						<form action="/cliente" method="post" style="display: inline;">
+							<input type="hidden" name="_method" value="delete"> <input
+								type="hidden" name="id" th:value="${cliente.id}"> <input
+								type="submit" value="Excluir">
+						</form></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>
