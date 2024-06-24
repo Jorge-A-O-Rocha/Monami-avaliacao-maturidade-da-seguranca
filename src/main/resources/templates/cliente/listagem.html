@@ -11,9 +11,11 @@
 		<a href="/cliente/formulario">Novo Cliente</a>
 		<form action="/cliente/pesquisa" method="get">
 			<input type="text" name="nomeCliente"
-				placeholder="Pesquisar por nome" th:value="*{nomeCliente}">
-			<input type="submit" value="Pesquisar">
+				placeholder="Pesquisar por nome" th:value="*{nomeCliente}"
+				style="color: black;"> <input type="submit"
+				value="Pesquisar">
 		</form>
+
 		<table>
 			<thead>
 				<tr>

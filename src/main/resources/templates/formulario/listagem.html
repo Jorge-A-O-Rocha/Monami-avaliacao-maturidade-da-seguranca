@@ -9,16 +9,24 @@
 	<div layout:fragment="conteudo">
 		<h1>Lista de Formulários</h1>
 		<a href="/formulario/formulario">Novo Formulário</a>
+
+		<form action="/formulario/pesquisa" method="get">
+			<input type="text" name="nomeEmpresa"
+				placeholder="Pesquisar por Nome da Empresa"
+				th:value="${nomeEmpresa}" style="color: black;"> <input
+				type="submit" value="Pesquisar">
+		</form>
+
 		<table>
 			<thead>
 				<tr>
 					<th>ID</th>
 					<th>CNPJ</th>
-					<th>Nome</th>
-					<th>Data Avaliacao</th>
-					<th>Diagnostico</th>
-					<th>Nivel aderencia</th>
-					<th>Pontuacao</th>
+					<th>Empresa</th>
+					<th>Data Avaliação</th>
+					<th>Diagnóstico</th>
+					<th>Nível de Aderência</th>
+					<th>Pontuação</th>
 					<th>Ações</th>
 				</tr>
 			</thead>

@@ -1,9 +1,11 @@
 package evento.fatec.api.controller;
 
+import org.springframework.data.domain.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 
 import evento.fatec.api.formulario.*;
 import jakarta.transaction.Transactional;
@@ -15,6 +17,7 @@ public class FormularioController {
 
 	@Autowired
 	private FormularioService service;
+	
 
 	@GetMapping("/formulario")
 	public String carregaPaginaFormulario(Long id, Model model) {
@@ -30,6 +33,23 @@ public class FormularioController {
 		model.addAttribute("lista", service.getAllFormulario());
 		return "formulario/listagem";
 	}
+	
+	@GetMapping("/pesquisa")
+    public String pesquisaFormulario(@RequestParam(name = "nomeEmpresa", required = false) String nomeEmpresa,
+                                     @RequestParam(name = "page", defaultValue = "0") int page,
+                                     @RequestParam(name = "size", defaultValue = "10") int size,
+                                     Model model) {
+        if (nomeEmpresa != null && !nomeEmpresa.isEmpty()) {
+            Page<Formulario> formularios = service.findByNomeEmpresa(nomeEmpresa, page, size);
+            model.addAttribute("lista", formularios.getContent());
+            model.addAttribute("page", formularios);
+        } else {
+            model.addAttribute("lista", service.getAllFormulario());
+        }
+        model.addAttribute("nomeEmpresa", nomeEmpresa);
+        return "formulario/listagem";
+    }
+
 
 	@PostMapping
 	@Transactional

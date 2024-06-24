@@ -3,6 +3,9 @@ package evento.fatec.api.formulario;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -25,8 +28,13 @@ public class FormularioService {
 	}
 
 	public Optional<Formulario> getFormularioById(Long id) {
-		return repository.findById(id);
-	}
+        return repository.findById(id);
+    }
+
+    public Page<Formulario> findByNomeEmpresa(String nomeEmpresa, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return repository.findByClienteNomeEmpresaContainingIgnoreCase(nomeEmpresa, pageable);
+    }
 
 	@Transactional
 	public Formulario createFormulario(DadosCadastroFormulario dados) {
