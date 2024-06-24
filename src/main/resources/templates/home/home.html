@@ -1,29 +1,66 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{template}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{template}">
 <head>
-<meta charset="UTF-8">
-<title>Home</title>
+    <meta charset="UTF-8">
+    <title>Segurança da Informação</title>
+    <style>
+        body {
+            color: #0000FF; /* Define a cor azul para o texto */
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0 15%;
+        }
+        h1, h2 {
+            color: #003366;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-	<div layout:fragment="content">
-		<h1>Segurança da Informação</h1>
+    <div layout:fragment="conteudo">
+        <h1>Segurança da Informação</h1>
 
-		<p>Aqui você pode incluir informações sobre boas práticas de
-			segurança da informação, políticas de segurança, dicas para proteção
-			de dados, entre outros conteúdos relevantes.</p>
+        <p>A segurança da informação é um conjunto de práticas e políticas destinadas a proteger a integridade, confidencialidade e disponibilidade das informações contra ameaças e riscos. Com a crescente digitalização e interconectividade, garantir a segurança das informações tornou-se crucial para todas as organizações.</p>
 
-		<!-- Exemplo de conteúdo -->
-		<p>A segurança da informação envolve a proteção de informações
-			contra acessos não autorizados, uso indevido, divulgação,
-			interrupção, modificação ou destruição. É essencial implementar
-			medidas adequadas para garantir a integridade, confidencialidade e
-			disponibilidade das informações.</p>
+        <h2>Importância da Segurança da Informação</h2>
+        <p>Proteger informações contra acessos não autorizados, uso indevido, divulgação, interrupção, modificação ou destruição é essencial para qualquer negócio. Você pode fazer uma avaliação automática se cadastrando e respondendo um formulário sobre os seus controles. A segurança da informação ajuda a:</p>
+        <ul>
+            <li><strong>Prevenir vazamentos de dados:</strong> Impedir que informações sensíveis caiam em mãos erradas.</li>
+            <li><strong>Garantir a continuidade dos negócios:</strong> Minimizar o impacto de incidentes de segurança e assegurar que as operações possam continuar sem interrupções significativas.</li>
+            <li><strong>Proteger a reputação da empresa:</strong> Evitar danos à reputação causados por violações de segurança e perda de confiança por parte de clientes e parceiros.</li>
+            <li><strong>Cumprir com regulamentações:</strong> Atender às exigências legais e regulatórias relacionadas à proteção de dados, como a LGPD (Lei Geral de Proteção de Dados) no Brasil e o GDPR (General Data Protection Regulation) na União Europeia.</li>
+        </ul>
 
-		<p>Para mais detalhes sobre como proteger suas informações,
-			consulte os especialistas em segurança da informação e siga as
-			diretrizes recomendadas para o seu negócio.</p>
-	</div>
+        <h2>Medidas de Segurança da Informação</h2>
+        <p>Implementar medidas adequadas de segurança da informação envolve uma abordagem holística que abrange tecnologias, processos e pessoas. Algumas das principais medidas incluem:</p>
+        <ul>
+            <li><strong>Controles de Acesso:</strong> Restringir o acesso às informações apenas a pessoas autorizadas. Isso pode incluir autenticação de múltiplos fatores (MFA), senhas fortes e gerenciamento de permissões.</li>
+            <li><strong>Criptografia:</strong> Proteger dados em trânsito e em repouso usando técnicas de criptografia robustas para evitar que sejam acessados por indivíduos não autorizados.</li>
+            <li><strong>Backup e Recuperação:</strong> Realizar backups regulares e garantir que os dados possam ser restaurados rapidamente em caso de perda ou comprometimento.</li>
+            <li><strong>Monitoramento e Detecção:</strong> Utilizar ferramentas de monitoramento para detectar atividades suspeitas e responder rapidamente a incidentes de segurança.</li>
+            <li><strong>Educação e Conscientização:</strong> Treinar os funcionários sobre as melhores práticas de segurança da informação e criar uma cultura de segurança dentro da organização.</li>
+            <li><strong>Políticas de Segurança:</strong> Desenvolver e implementar políticas de segurança claras que definam as responsabilidades e procedimentos a serem seguidos para proteger as informações.</li>
+        </ul>
+
+        <h2>Controles de Processos</h2>
+        <p>Ter controles bem definidos nos processos é fundamental para a segurança da informação. Isso inclui:</p>
+        <ul>
+            <li><strong>Mapeamento de Processos:</strong> Identificar e documentar todos os processos críticos da organização para entender como as informações fluem e onde estão os pontos de vulnerabilidade.</li>
+            <li><strong>Avaliação de Riscos:</strong> Realizar avaliações de riscos regulares para identificar ameaças potenciais e implementar medidas de mitigação.</li>
+            <li><strong>Auditorias Internas:</strong> Conduzir auditorias internas para garantir que os controles de segurança estão sendo seguidos corretamente e identificar áreas de melhoria.</li>
+            <li><strong>Automação de Processos:</strong> Utilizar ferramentas de automação para reduzir erros humanos e aumentar a eficiência e segurança dos processos.</li>
+            <li><strong>Planos de Continuidade de Negócios:</strong> Desenvolver e testar planos de continuidade de negócios para garantir que a organização possa continuar operando durante e após um incidente de segurança.</li>
+        </ul>
+
+        <p>Para mais detalhes sobre como proteger suas informações e implementar controles eficazes nos seus processos, consulte especialistas em segurança da informação e siga as diretrizes recomendadas para o seu negócio.</p>
+    </div>
 </body>
 </html>
